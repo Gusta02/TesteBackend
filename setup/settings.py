@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'bancoTesteBack'),
+        'NAME': os.environ.get('DB_NAME', 'postgres'),
         'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', '140546420'),
+        'PASSWORD': os.environ.get('DB_PASS', '1234'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
