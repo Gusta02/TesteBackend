@@ -19,3 +19,11 @@ class ContaBancaria(models.Model):
     
     def __str__(self):
         return self.idUsuario
+
+class Transacoes(models.Model):
+    idUsuario_origem = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    idUsuario_destino = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    valor_transferencia = models.DecimalField(max_digits=19, decimal_places=2)
+    
+    def __str__(self):
+        return self.idUsuario_origem
