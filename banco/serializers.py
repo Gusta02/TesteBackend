@@ -1,5 +1,6 @@
+from wsgiref.validate import validator
 from rest_framework import serializers
-from banco.models import Usuario
+from banco.models import Usuario, ContaBancaria
 from banco.validators import *
 
 class UsuarioSerializer(serializers.ModelSerializer):
@@ -14,3 +15,11 @@ class UsuarioSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'nome_completo':"Não inclua números neste campo"})
         return data
     
+class ContaBancariaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContaBancaria
+        fields = '__all__'
+        def validate(self, data):
+            if not numero_conta(data['numero_conta']):
+                raise serializers.ValidationError({'numero_conta':"Número de Conta inválido, por favor preencha somente com numeros"})
+            return data
