@@ -1,2 +1,5 @@
 env
 db.sqlite3
+banco\__pycache__
+banco\migrations\__pycache__
+setup\__pycache__
