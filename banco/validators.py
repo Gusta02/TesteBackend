@@ -1,5 +1,8 @@
+from operator import truediv
 import re
+from urllib import response
 from validate_docbr import CPF, CNPJ
+
 
 def cpf_cnpj_valido(numero_do_cpf_cnpj):
 
@@ -21,3 +24,10 @@ def cpf_cnpj_valido(numero_do_cpf_cnpj):
 def nome_valido(nome):
     return nome.isalpha()
 
+def numero_conta(conta):
+
+    if conta == int:
+        resposta = True
+    else:
+        resposta = False
+    return resposta

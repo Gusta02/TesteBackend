@@ -10,3 +10,12 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.nome_completo
+
+class ContaBancaria(models.Model):
+    idUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    numero_conta = models.IntegerField(unique=True)
+    saldo = models.DecimalField(max_digits=19, decimal_places=2)
+    BitAtivo = models.BooleanField()
+    
+    def __str__(self):
+        return self.idUsuario
