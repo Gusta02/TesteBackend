@@ -1,6 +1,5 @@
-import re
-from urllib.robotparser import RequestRate
 import requests
+from requests.auth import HTTPBasicAuth
 from validate_docbr import CPF, CNPJ
 
 def cpf_cnpj_valido(numero_do_cpf_cnpj):
@@ -27,17 +26,18 @@ def numero_conta(conta):
     return resposta
 
 def permissao_user(id):
-    tipoUser = requests.get(f'http://127.0.0.1:8000/Usuario/{id}/Tipo/')
-    if tipoUser['Usuario'] == True:
-        resposta = False
-    else:
+    tipoUser = requests.get(f'http://127.0.0.1:8000/Usuario/{id}/Tipo/', auth=HTTPBasicAuth('gusta', '1234'))
+    data = tipoUser.json()
+    if data[0]['Usuario'] == False:
         resposta = True
+    else:
+        resposta = False
     return resposta
 
-def Valida_valorTransferencia(idUser, valorTransferencia):
-    saldo = requests.get(f"http://127.0.0.1:8000/SaldoBancario/{idUser}/Saldo/")
-
-    if saldo['saldo_total'] >= valorTransferencia:
+def Valida_valorTransferencia(id, valorTransferencia):
+    saldo = requests.get(f"http://127.0.0.1:8000/SaldoBancario/{id}/Saldo/", auth=HTTPBasicAuth('gusta', '1234'))
+    data = saldo.json()
+    if data[0]['saldo_total'] >= valorTransferencia:
         resposta = True
     else:
         resposta = False
@@ -45,7 +45,8 @@ def Valida_valorTransferencia(idUser, valorTransferencia):
 
 def valida_api():
     autenticacao = requests.get('https://run.mocky.io/v3/d02168c6-d88d-4ff2-aac6-9e9eb3425e31')
-    if autenticacao['authorization'] == True:
+    data = autenticacao.json()
+    if data['authorization'] == True:
         resposta = True
     else:
         resposta = False
