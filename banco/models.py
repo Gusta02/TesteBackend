@@ -21,8 +21,8 @@ class ContaBancaria(models.Model):
         return self.idUsuario
 
 class Transacoes(models.Model):
-    idUsuario_origem = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    idUsuario_destino = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    idUsuario_origem = models.IntegerField()
+    idUsuario_destino = models.IntegerField()
     valor_transferencia = models.DecimalField(max_digits=19, decimal_places=2)
     
     def __str__(self):
