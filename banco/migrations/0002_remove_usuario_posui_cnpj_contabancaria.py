@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('numero_conta', models.IntegerField()),
                 ('Tipo_Conta', models.CharField(max_length=8)),
                 ('saldo', models.DecimalField(decimal_places=10, max_digits=19)),
-                ('BitAtivo', models.BinaryField()),
+                ('BitAtivo', models.BooleanField()),
                 ('idUsuario', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='banco.usuario')),
             ],
         ),
