@@ -1,4 +1,4 @@
-# **Teste Backend Q2Bank**
+# **Desafio Backend Pleno**
 
 ## ***Siga as etapas abaixo em ordem, para executar a API.***
 
