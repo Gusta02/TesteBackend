@@ -9,7 +9,7 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Teste Backend Q2Bank",
+      title="Teste Backend",
       default_version='v1',
       description="Api de Transações bancarias, tendo internamente rotas para Cadastro de Usuario, Criação de Contas Bancarias, e Tratativa de usuarios.",
       terms_of_service="#",
